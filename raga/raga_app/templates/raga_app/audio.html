@@ -1,0 +1,37 @@
+{% comment %} <article class="centered">
+    <h3>{{ audio.title }}</h3>
+    <!-- Display the audio player -->
+    <audio controls>
+        <!-- Provide the URL of the audio file -->
+        <source src="{{ audio.audio.url }}" type="{% if '.mp3' in audio.audio.name %}audio/mpeg{% elif '.wav' in audio.audio.name %}audio/wav{% endif %}">
+        <!-- Provide fallback content if the browser doesn't support the audio tag -->
+        Your browser does not support the audio element.
+    </audio>
+    <p>Uploaded by {{ audio.uploaded_by }}</p>
+</article> {% endcomment %}
+
+<!-- Path: raga/raga_app/templates/raga_app/audio.html -->
+{% load static %}
+<article class="centered">
+    <h3>{{ audio.title }}</h3>
+    <!-- Display the audio player -->
+    <audio id="audio-player" controls>
+        <!-- Provide the URL of the audio file -->
+        <source src="{{ audio.audio.url }}" type="{% if '.mp3' in audio.audio.name %}audio/mpeg{% elif '.wav' in audio.audio.name %}audio/wav{% endif %}">
+        <!-- Provide fallback content if the browser doesn't support the audio tag -->
+        Your browser does not support the audio element.
+    </audio>
+    <p>Uploaded by {{ audio.uploaded_by }}</p>
+</article>
+
+
+<script>
+    // Get the audio player element
+    const audioPlayer = document.getElementById('audio-player');
+
+    // Play the audio when the page is loaded
+    window.addEventListener('load', () => {
+        audioPlayer.play();
+    });
+</script>
+
