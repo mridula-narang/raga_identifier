@@ -5,7 +5,7 @@ from .models import Audio
 # Create your views here.
 class IndexView(View):
     def get(self, request):
-        audio = Audio.objects.order_by("uploaded_date")
+        audio = Audio.objects.order_by("-uploaded_date")
         return render(
             request,
             "raga_app/index.html",

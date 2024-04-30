@@ -2,8 +2,9 @@
 
 {% block content %}
 <main>
-    {% for audios in audio %}
+    {% with audios=audio.0 %}
     {% include 'raga_app/audio.html' %}
-    {% endfor %}
+    {% comment %} {% endfor %} {% endcomment %}
+    {% endwith %}
 </main>
 {% endblock content %}
